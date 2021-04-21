@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "CqKu1uE3oYLq4WE1tk4xeYnLmJHSB3jG1aHCGR5fL2+LTF8legZU5Yz7xYSlZYRchckRZoPeqBLf9LPkkGqk6A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eloy\\GitHub\\MicroservicesLibrary\\TiendaServicios\\TiendaServicios.Api.Autor\\TiendaServicios.Api.Autor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eloy\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}
