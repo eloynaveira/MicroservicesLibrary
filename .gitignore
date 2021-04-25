@@ -440,3 +440,7 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+TiendaServicios/TiendaServicios.Api.Autor/obj/TiendaServicios.Api.Autor.csproj.nuget.dgspec.json
+*.cache
+TiendaServicios/TiendaServicios.Api.Autor/obj/project.nuget.cache
+TiendaServicios/.vs/TiendaServicios/v16/.suo
