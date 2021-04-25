@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lTZ1nsyBv7pbxPoaNZE/XjJVNXmRXsELyb7udLFIWj2+mkXXqVZP3fuTk3Mf80p7qqkRjMgWmcjKkcGDqEnqPg==",
+  "dgSpecHash": "+CJCrK7UY/Lf7DwN3qy3CEaZmQUfe/FgbE/21u5yd3axpQmOMCvRCwx6rmWFX1XMFKuKjQG7HIPs5zRnTOZiVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\eloy\\GitHub\\MicroservicesLibrary\\TiendaServicios\\TiendaServicios.Api.Autor\\TiendaServicios.Api.Autor.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\eloy\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\eloy\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\eloy\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\eloy\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\eloy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

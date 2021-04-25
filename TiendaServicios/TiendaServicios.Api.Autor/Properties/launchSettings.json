@@ -20,8 +20,8 @@
     "TiendaServicios.Api.Autor": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "http://localhost:5000",
+      "launchUrl": "autor",
+      "applicationUrl": "http://localhost:56162",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
