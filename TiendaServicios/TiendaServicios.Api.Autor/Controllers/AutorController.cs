@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TiendaServicios.Api.Autor.Modelo;
 using TiendaServicios.Api.Autor.Servicios;
 
 namespace TiendaServicios.Api.Autor.Controllers
@@ -24,6 +25,12 @@ namespace TiendaServicios.Api.Autor.Controllers
         public async Task<ActionResult<Unit>> Crear(Nuevo.Ejecuta data)
         {
             return await _mediator.Send(data);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<AutorLibro>>> GetAutores()
+        {
+            return await _mediator.Send(new Consulta.ListaAutor());
         }
     }
 }
