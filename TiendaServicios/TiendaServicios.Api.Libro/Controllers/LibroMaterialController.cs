@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Servicios;
+using TiendaServicios.Api.Libro.Servicios.DTOs;
 
 namespace TiendaServicios.Api.Libro.Controllers
 {
@@ -24,6 +25,12 @@ namespace TiendaServicios.Api.Libro.Controllers
         public async Task<ActionResult<Unit>> Crear(Nuevo.Ejecuta data)
         {
             return await _mediator.Send(data);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<LibreriaMaterialDTO>>> GetLibros()
+        {
+            return await _mediator.Send(new Consulta.Ejecuta());
         }
     }
 }
