@@ -30,7 +30,7 @@ namespace TiendaServicios.Api.Autor.Servicios
 
         public class Manejador : IRequestHandler<Ejecuta>
         {
-            public readonly AutorContext _contexto;
+            private readonly AutorContext _contexto;
 
             public Manejador(AutorContext contexto)
             {
