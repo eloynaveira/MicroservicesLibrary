@@ -9,16 +9,16 @@ using TiendaServicios.Api.CarritoCompra.Persistencia;
 
 namespace TiendaServicios.Api.CarritoCompra.Servicios
 {
-    public class Ejecuta
+    public class Nuevo
     {
-        public class Nuevo : IRequest
+        public class Ejecuta : IRequest
         {
             public DateTime FechaCreacionSesion { get; set; }
 
             public List<string> ProductoLista { get; set; }
         }
 
-        public class Manejador : IRequestHandler<Nuevo>
+        public class Manejador : IRequestHandler<Ejecuta>
         {
             private readonly CarritoContexto contexto;
 
@@ -27,7 +27,7 @@ namespace TiendaServicios.Api.CarritoCompra.Servicios
                 this.contexto = contexto;
             }
 
-            public async Task<Unit> Handle(Nuevo request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
                 var carritocompra = new CarritoSesion
                 {
