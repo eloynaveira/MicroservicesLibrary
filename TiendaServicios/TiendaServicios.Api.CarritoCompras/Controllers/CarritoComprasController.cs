@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TiendaServicios.Api.CarritoCompra.Servicios;
+using TiendaServicios.Api.CarritoCompra.Servicios.DTOs;
 
 namespace TiendaServicios.Api.CarritoCompra.Controllers
 {
@@ -24,6 +25,12 @@ namespace TiendaServicios.Api.CarritoCompra.Controllers
         public async Task<ActionResult<Unit>> Crear(Nuevo.Ejecuta data)
         {
             return await mediator.Send(data);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CarritoDTO>> GetCarrito(int id)
+        {
+            return await mediator.Send(new Consulta.Ejecuta { CarritoSesionId = id });
         }
     }
 }

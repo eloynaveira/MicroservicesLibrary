@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TiendaServicios.Api.CarritoCompra.Persistencia;
+using TiendaServicios.Api.CarritoCompra.RemoteInterface;
+using TiendaServicios.Api.CarritoCompra.RemoteService;
 using TiendaServicios.Api.CarritoCompra.Servicios;
 
 namespace TiendaServicios.Api.CarritoCompras
@@ -36,10 +38,13 @@ namespace TiendaServicios.Api.CarritoCompras
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
+
             services.AddHttpClient("Libros", config =>
             {
                 config.BaseAddress = new Uri(Configuration["Services:Libros"]);
             });
+
+            services.AddScoped<ILibrosService, LibrosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

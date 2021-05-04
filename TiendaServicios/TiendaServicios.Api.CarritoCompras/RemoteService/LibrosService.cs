@@ -13,9 +13,9 @@ namespace TiendaServicios.Api.CarritoCompra.RemoteService
     public class LibrosService : ILibrosService
     {
         private readonly IHttpClientFactory httpClient;
-        private readonly ILogger logger;
+        private readonly ILogger<LibrosService> logger;
 
-        public LibrosService(IHttpClientFactory _httpClient, ILogger _logger)
+        public LibrosService(IHttpClientFactory _httpClient, ILogger<LibrosService> _logger)
         {
             httpClient = _httpClient;
             logger = _logger;
