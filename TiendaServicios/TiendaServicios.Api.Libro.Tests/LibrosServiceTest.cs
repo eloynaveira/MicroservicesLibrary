@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using TiendaServicios.Api.Libro.Modelo;
 using TiendaServicios.Api.Libro.Persistencia;
 using TiendaServicios.Api.Libro.Servicios;
@@ -37,15 +38,33 @@ namespace TiendaServicios.Api.Libro.Tests
             dbSet.As<IQueryable<LibreriaMaterial>>().Setup(x => x.Expression).Returns(datosPrueba.Expression);
             dbSet.As<IQueryable<LibreriaMaterial>>().Setup(x => x.ElementType).Returns(datosPrueba.ElementType);
             dbSet.As<IQueryable<LibreriaMaterial>>().Setup(x => x.GetEnumerator()).Returns(datosPrueba.GetEnumerator());
+
+            dbSet.As<IAsyncEnumerable<LibreriaMaterial>>().Setup(x => x.GetAsyncEnumerator(new CancellationToken()))
+                .Returns(new AsyncEnumerator<LibreriaMaterial>(datosPrueba.GetEnumerator()));
+
+            var contexto = new Mock<ContextoLibreria>();
+            contexto.Setup(x => x.LibreriaMaterial).Returns(dbSet.Object);
+            return contexto;
         }
 
         [Fact]
-        public void GetLibros()
+        public async void GetLibrosAsync()
         {
-            var mockContexto = new Mock<ContextoLibreria>();
-            var mockMapper = new Mock<IMapper>();
-            Consulta.Manejador manejador = new Consulta.Manejador(mockContexto.Object, mockMapper.Object);
+            System.Diagnostics.Debugger.Launch();
 
+            var mockContexto = CrearContexto();
+            var mapConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingTest());
+            });
+            var mapper = mapConfig.CreateMapper();
+            Consulta.Manejador manejador = new Consulta.Manejador(mockContexto.Object, mapper);
+
+            Consulta.Ejecuta request = new Consulta.Ejecuta();
+
+            var lista = await manejador.Handle(request, new CancellationToken());
+
+            Assert.True(lista.Any());
         }
     }
 }
