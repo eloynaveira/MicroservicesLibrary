@@ -73,8 +73,6 @@ namespace TiendaServicios.Api.Libro.Tests
         [Fact]
         public async void GetLibrosAsync()
         {
-            System.Diagnostics.Debugger.Launch();
-
             var mockContexto = CrearContexto();
             var mapConfig = new MapperConfiguration(cfg =>
             {
@@ -89,5 +87,27 @@ namespace TiendaServicios.Api.Libro.Tests
 
             Assert.True(lista.Any());
         }
+
+        [Fact]
+        public async void GuardarLibroAsync()
+        {
+            var options = new DbContextOptionsBuilder<ContextoLibreria>()
+                .UseInMemoryDatabase(databaseName: "LibroDBTest")
+                .Options;
+
+            var contexto = new ContextoLibreria(options);
+
+            var request = new Nuevo.Ejecuta();
+            request.Titulo = "libro de Microservice";
+            request.AutorLibro = Guid.Empty;
+            request.FechaPublicacion = DateTime.Now;
+
+            var manejador = new Nuevo.Manejador(contexto);
+
+            var libro = await manejador.Handle(request, new CancellationToken());
+
+            Assert.True(libro != null);
+        }
+    
     }
 }
