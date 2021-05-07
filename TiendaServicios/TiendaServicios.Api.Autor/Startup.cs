@@ -33,7 +33,7 @@ namespace TiendaServicios.Api.Autor
 
             services.AddDbContext<AutorContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabase"));
+                options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabaseDocker"));
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
