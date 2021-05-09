@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "api/LibroMaterial",
+      "DownstreamPathTemplate": "/api/LibroMaterial",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -13,7 +13,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
     },
     {
-      "DownstreamPathTemplate": "api/LibroMaterial/{id}",
+      "DownstreamPathTemplate": "/api/LibroMaterial/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
