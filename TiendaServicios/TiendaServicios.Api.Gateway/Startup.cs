@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TiendaServicios.Api.Gateway.ImplRemote;
+using TiendaServicios.Api.Gateway.InterfaceRemote;
+using TiendaServicios.Api.Gateway.MessageHandler;
 
 namespace TiendaServicios.Api.Gateway
 {
@@ -26,8 +29,14 @@ namespace TiendaServicios.Api.Gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllers();
-            services.AddOcelot();
+            services.AddScoped<IAutorRemote, AutorRemote>();
+
+            services.AddHttpClient("AutorService", config =>
+            {
+                config.BaseAddress = new Uri(Configuration["Services:Autor"]);
+            });
+
+            services.AddOcelot().AddDelegatingHandler<LibroHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
