@@ -14,6 +14,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Persistencia;
 using TiendaServicios.Api.Libro.Servicios;
+using TiendaServicios.RabbitMQ.Lib.BusRabbit;
+using TiendaServicios.RabbitMQ.Lib.Impl;
 
 namespace TiendaServicios.Api.Libro
 {
@@ -29,6 +31,8 @@ namespace TiendaServicios.Api.Libro
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
 
             services.AddDbContext<ContextoLibreria>(opt =>

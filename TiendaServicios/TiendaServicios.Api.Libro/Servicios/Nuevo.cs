@@ -7,6 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Modelo;
 using TiendaServicios.Api.Libro.Persistencia;
+using TiendaServicios.RabbitMQ.Lib.BusRabbit;
+using TiendaServicios.RabbitMQ.Lib.EventQueue;
 
 namespace TiendaServicios.Api.Libro.Servicios
 {
@@ -35,9 +37,12 @@ namespace TiendaServicios.Api.Libro.Servicios
         {
             private readonly ContextoLibreria contexto;
 
-            public Manejador(ContextoLibreria contexto)
+            private readonly IRabbitEventBus eventBus;
+
+            public Manejador(ContextoLibreria contexto, IRabbitEventBus eventBus)
             {
                 this.contexto = contexto;
+                this.eventBus = eventBus;
             }
 
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
@@ -52,6 +57,8 @@ namespace TiendaServicios.Api.Libro.Servicios
                 contexto.LibreriaMaterial.Add(libro);
 
                 var value = await contexto.SaveChangesAsync();
+
+                eventBus.Publish(new EmailEventQueue("eloy@prueba.es", request.Titulo, "Email de prueba"));
 
                 if (value > 0)
                     return Unit.Value;

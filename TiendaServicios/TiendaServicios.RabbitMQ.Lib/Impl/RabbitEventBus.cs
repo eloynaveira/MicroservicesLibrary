@@ -30,7 +30,7 @@ namespace TiendaServicios.RabbitMQ.Lib.Impl
 
         public void Publish<T>(T @event) where T : Event
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "rabbit-microservice-web" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel()) {
                 var eventName = @event.GetType().Name;
@@ -74,7 +74,7 @@ namespace TiendaServicios.RabbitMQ.Lib.Impl
 
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost",
+                HostName = "rabbit-microservice-web",
                 DispatchConsumersAsync = true
             };
 
