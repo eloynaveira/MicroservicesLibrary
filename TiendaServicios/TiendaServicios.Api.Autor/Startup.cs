@@ -35,7 +35,12 @@ namespace TiendaServicios.Api.Autor
         {
             services.AddTransient<IEventHandler<EmailEventQueue>, EmailEventHandler>();
 
-            services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+            services.AddSingleton<IRabbitEventBus, RabbitEventBus>( sp => {
+                var scopefactory = sp.GetRequiredService<IServiceScopeFactory>();
+                return new RabbitEventBus(sp.GetService<IMediator>(), scopefactory);
+            });
+
+            services.AddTransient<EmailEventHandler>();
             
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
 
