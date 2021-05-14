@@ -109,7 +109,7 @@ namespace TiendaServicios.RabbitMQ.Lib.Impl
 
                         var tipoConcreto = typeof(IEventHandler<>).MakeGenericType(tipoEvento);
 
-                        await (Task)tipoConcreto.GetMethod("Handler").Invoke(manejador, new object[] { eventoDS });
+                        await (Task)tipoConcreto.GetMethod("Handle").Invoke(manejador, new object[] { eventoDS });
                     }
                 }
             }
