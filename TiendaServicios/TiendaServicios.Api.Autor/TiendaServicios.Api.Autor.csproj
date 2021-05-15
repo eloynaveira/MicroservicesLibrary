@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TiendaServicios.Mensajeria.Lib\TiendaServicios.Mensajeria.Lib.csproj" />
     <ProjectReference Include="..\TiendaServicios.RabbitMQ.Lib\TiendaServicios.RabbitMQ.Lib.csproj" />
   </ItemGroup>
 

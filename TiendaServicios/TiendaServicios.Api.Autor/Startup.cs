@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using TiendaServicios.Api.Autor.ManejadorRabbit;
 using TiendaServicios.Api.Autor.Persistencia;
 using TiendaServicios.Api.Autor.Servicios;
+using TiendaServicios.Mensajeria.Lib.SendGridLib.Impl;
+using TiendaServicios.Mensajeria.Lib.SendGridLib.Interface;
 using TiendaServicios.RabbitMQ.Lib.BusRabbit;
 using TiendaServicios.RabbitMQ.Lib.EventQueue;
 using TiendaServicios.RabbitMQ.Lib.Impl;
@@ -39,6 +41,8 @@ namespace TiendaServicios.Api.Autor
                 var scopefactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitEventBus(sp.GetService<IMediator>(), scopefactory);
             });
+
+            services.AddSingleton<ISendGridEmail, SendGridEmail>();
 
             services.AddTransient<EmailEventHandler>();
             
